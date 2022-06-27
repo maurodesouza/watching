@@ -18,11 +18,11 @@ const defaultTheme = {
     },
 
     sizes: {
-      xsmall: '1.2rem',
-      small: '1.4rem',
-      medium: '1.6rem',
-      large: '2.0rem',
-      xlarge: '2.6rem',
+      xsmall: '1.6rem',
+      small: '2.4rem',
+      medium: '3.2rem',
+      large: '5.6rem',
+      xlarge: '8rem',
     },
   },
 
