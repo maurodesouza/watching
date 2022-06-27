@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: 10px;
   }
 
+  html,body, #__next {
+    height: 100%;
+  }
+
   ul,
   li {
     list-style: none;
