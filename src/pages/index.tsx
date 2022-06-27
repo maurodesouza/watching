@@ -1,5 +1,5 @@
-const Home = () => {
-  return <h1>Hello world!</h1>;
-};
+import { HomeTemplate } from 'templates';
+
+const Home = () => <HomeTemplate />;
 
 export default Home;
