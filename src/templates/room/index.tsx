@@ -1,4 +1,6 @@
+import { Player } from 'components';
 import { useRouter } from 'next/router';
+
 import * as S from './styles';
 
 const RoomTemplate = () => {
@@ -6,7 +8,8 @@ const RoomTemplate = () => {
 
   return (
     <S.Container>
-      <strong>Room:</strong> {query.id}
+      <Player />
+
     </S.Container>
   );
 };
