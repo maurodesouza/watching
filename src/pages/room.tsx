@@ -1,7 +1,14 @@
 import { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
 
-import { RoomTemplate } from 'templates';
 import { firestore } from 'services';
+
+const RoomTemplate = dynamic(
+  () => import('../templates/room').then(result => result.RoomTemplate),
+  {
+    ssr: false,
+  }
+);
 
 const Room = () => <RoomTemplate />;
 
