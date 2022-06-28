@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  onSnapshot,
+  where,
+  Timestamp,
+} from 'firebase/firestore';
 
 import { useFirebase } from 'hooks';
 import { events } from 'app';
@@ -14,7 +20,10 @@ const ThreadListener = ({ threadId }: ThreadListenerProps) => {
   useEffect(() => {
     if (!database) return;
 
-    const docs = collection(database, `thread/${threadId}/interactions`);
+    const docs = query(
+      collection(database, `thread/${threadId}/interactions`),
+      where('created_at', '>', Timestamp.now())
+    );
 
     const unsubscribe = onSnapshot(docs, snapshot => {
       snapshot.docChanges().forEach(change => {
