@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@styled-icons/feather": "^10.34.0",
     "firebase": "^9.8.4",
     "firebase-admin": "^11.0.0",
     "next": "latest",
