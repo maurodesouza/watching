@@ -17,9 +17,10 @@ const handle = async (request: NextApiRequest, response: NextApiResponse) => {
   const id = uuid();
 
   try {
-    await firestore
-      .doc(`room/${id}`)
-      .create({ id, created_at: FieldValue.serverTimestamp() });
+    const doc = { id, created_at: FieldValue.serverTimestamp() };
+
+    await firestore.doc(`room/${id}`).create(doc);
+    await firestore.doc(`thread/${id}`).create(doc);
 
     response.status(StatusCode.OK).json({ roomId: id });
   } catch (err) {
