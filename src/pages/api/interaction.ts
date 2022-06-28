@@ -17,27 +17,7 @@ const handle = async (request: NextApiRequest, response: NextApiResponse) => {
       .status(StatusCode.METHOD_NOT_ALLOWED)
       .json({ error: 'method not allowed' });
 
-  if (!threadId)
-    return response
-      .status(StatusCode.BAD_REQUEST)
-      .json({ error: 'thread ID not provided' });
-
-  if (!event)
-    return response
-      .status(StatusCode.BAD_REQUEST)
-      .json({ error: 'event type not provided' });
-
   try {
-    const result = await fetch(
-      `http://localhost:3000/api/thread/exist?id=${threadId}`
-    );
-    const threadExist = (await result.json()).exists;
-
-    if (!threadExist)
-      return response
-        .status(StatusCode.BAD_REQUEST)
-        .json({ error: 'thread not exists' });
-
     const interactionId = uuid();
 
     const doc = {
