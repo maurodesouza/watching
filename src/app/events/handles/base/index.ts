@@ -1,0 +1,1 @@
+export { BaseEmittingEventHandle } from './emitting';
