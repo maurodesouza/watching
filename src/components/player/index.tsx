@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import VideoPlayer from 'react-player';
 
+import { Pause as PauseIcon, Play as PlayIcon } from '@styled-icons/feather';
+
 import { events } from 'app';
 import { Events } from 'types';
 
@@ -12,6 +14,12 @@ const Player = () => {
 
   const handlePause = () => setPlaying(false);
   const handlePlay = () => setPlaying(true);
+
+  const handlePlayPause = () => {
+    const event = playing ? 'pause' : 'play';
+
+    events.player[event]();
+  };
 
   useEffect(() => {
     events.on(Events.PLAYER_VIDEO_PAUSED, handlePause);
@@ -25,17 +33,25 @@ const Player = () => {
 
   return (
     <S.Container>
-      {url && (
-        <VideoPlayer
-          url={url}
-          width="100%"
-          height="100%"
-          playing={playing}
-          onEnded={() => setUrl('')}
-          onPlay={events.player.play}
-          onPause={events.player.pause}
-        />
-      )}
+      <S.Wrapper>
+        <S.VideoWrapper>
+          {url && (
+            <VideoPlayer
+              url={url}
+              width="100%"
+              height="100%"
+              playing={playing}
+              onEnded={() => setUrl('')}
+            />
+          )}
+        </S.VideoWrapper>
+      </S.Wrapper>
+
+      <S.Controls>
+        <S.Button onClick={handlePlayPause}>
+          {playing ? <PauseIcon size={32} /> : <PlayIcon size={32} />}
+        </S.Button>
+      </S.Controls>
     </S.Container>
   );
 };
