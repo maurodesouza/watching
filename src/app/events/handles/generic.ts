@@ -1,7 +1,7 @@
 import { Events } from 'types';
-import { BaseEmittingEventHandle } from './base';
+import { BaseEventHandle } from './base';
 
-class GenericHandleEvents extends BaseEmittingEventHandle {
+class GenericHandleEvents extends BaseEventHandle {
   constructor() {
     super();
   }

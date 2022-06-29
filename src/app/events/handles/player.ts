@@ -1,7 +1,7 @@
 import { Events } from 'types';
-import { BaseInteractionEventHandle } from './base';
+import { BaseEventHandle } from './base';
 
-class PlayerHandleEvents extends BaseInteractionEventHandle {
+class PlayerHandleEvents extends BaseEventHandle {
   constructor() {
     super();
 
