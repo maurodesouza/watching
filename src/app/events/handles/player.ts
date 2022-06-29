@@ -13,6 +13,13 @@ class PlayerHandleEvents extends BaseEventHandle {
     this.emit(Events.PLAYER_VIDEO_PLAYING, value);
   };
 
+  video(url: string) {
+    this.generateInteraction({
+      event: Events.PLAYER_VIDEO_CHANGED,
+      payload: { url },
+    });
+  }
+
   pause() {
     this.generateInteraction({ event: Events.PLAYER_VIDEO_PAUSED });
   }

@@ -17,16 +17,24 @@ const Player = () => {
     events.player.playing(value);
   };
 
+  const handleChangeVideo = (event: CustomEvent) => {
+    const { url } = event.detail.data;
+
+    setUrl(url);
+  };
+
   const handlePause = () => handleChangePlayingState(false);
   const handlePlay = () => handleChangePlayingState(true);
 
   useEffect(() => {
     events.on(Events.PLAYER_VIDEO_PAUSED, handlePause);
     events.on(Events.PLAYER_VIDEO_PLAYED, handlePlay);
+    events.on(Events.PLAYER_VIDEO_CHANGED, handleChangeVideo);
 
     return () => {
       events.off(Events.PLAYER_VIDEO_PAUSED, handlePause);
       events.off(Events.PLAYER_VIDEO_PLAYED, handlePlay);
+      events.off(Events.PLAYER_VIDEO_CHANGED, handleChangeVideo);
     };
   }, []);
 

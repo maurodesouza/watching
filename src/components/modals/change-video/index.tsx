@@ -11,8 +11,11 @@ const ChangeVideoModal = () => {
     event.preventDefault();
 
     const input = event.target[0] as HTMLInputElement;
+    const url = input.value;
+
     input.value = '';
 
+    events.player.video(url);
     events.modal.close();
   };
 
