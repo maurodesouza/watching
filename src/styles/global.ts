@@ -51,7 +51,7 @@ const GlobalStyles = createGlobalStyle`
     input,
     textarea {
       font-family: ${theme.font.family};
-      font-size: ${theme.font.sizes.medium};
+      font-size: ${theme.font.sizes.small};
       font-weight: ${theme.font.weights.normal};
       color: ${theme.colors.text};
     }
