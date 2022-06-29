@@ -19,11 +19,8 @@ const Player = () => {
     events.player.playing(value);
   };
 
-  const handleChangeVideo = (event: CustomEvent) => {
-    const { url } = event.detail.data;
-
-    setUrl(url);
-  };
+  const handleChangeVideo = (event: CustomEvent) =>
+    setUrl(event.detail.data.url);
 
   const handleChangeVolume = (event: CustomEvent<number>) =>
     setVolume(event.detail);
