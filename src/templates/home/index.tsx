@@ -15,11 +15,7 @@ const HomeTemplate = () => {
 
     const result = (await response.json()) as ApiRoomPostResponse;
 
-    router.push('/room', {
-      query: {
-        id: result.roomId,
-      },
-    });
+    router.push(`/room?id=${result.roomId}`);
   };
 
   return (
