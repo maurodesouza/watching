@@ -1,1 +1,3 @@
-export enum Modals {}
+export enum Modals {
+  CHANGE_VIDEO = 'change-video',
+}
