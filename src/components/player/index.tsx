@@ -1,25 +1,24 @@
 import { useEffect, useState } from 'react';
 import VideoPlayer from 'react-player';
 
-import { Pause as PauseIcon, Play as PlayIcon } from '@styled-icons/feather';
-
+import { PlayerControls } from 'components';
 import { events } from 'app';
-import { Events } from 'types';
 
+import { Events } from 'types';
 import * as S from './styles';
 
 const Player = () => {
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=u6tZhZvaP3M');
   const [playing, setPlaying] = useState(false);
 
-  const handlePause = () => setPlaying(false);
-  const handlePlay = () => setPlaying(true);
+  const handleChangePlayingState = (value: boolean) => {
+    setPlaying(value);
 
-  const handlePlayPause = () => {
-    const event = playing ? 'pause' : 'play';
-
-    events.player[event]();
+    events.player.playing(value);
   };
+
+  const handlePause = () => handleChangePlayingState(false);
+  const handlePlay = () => handleChangePlayingState(true);
 
   useEffect(() => {
     events.on(Events.PLAYER_VIDEO_PAUSED, handlePause);
@@ -47,11 +46,7 @@ const Player = () => {
         </S.VideoWrapper>
       </S.Wrapper>
 
-      <S.Controls>
-        <S.Button onClick={handlePlayPause}>
-          {playing ? <PauseIcon size={32} /> : <PlayIcon size={32} />}
-        </S.Button>
-      </S.Controls>
+      <PlayerControls />
     </S.Container>
   );
 };

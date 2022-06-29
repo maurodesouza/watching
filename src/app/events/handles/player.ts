@@ -9,6 +9,10 @@ class PlayerHandleEvents extends BaseEventHandle {
     this.play = this.play.bind(this);
   }
 
+  playing = (value: boolean) => {
+    this.emit(Events.PLAYER_VIDEO_PLAYING, value);
+  };
+
   pause() {
     this.generateInteraction({ event: Events.PLAYER_VIDEO_PAUSED });
   }
