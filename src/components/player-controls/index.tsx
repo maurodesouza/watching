@@ -5,9 +5,10 @@ import {
   RefreshCcw as ChangeIcon,
 } from '@styled-icons/feather';
 
+import { VolumeRange } from './volume';
 import { events } from 'app';
-import { Events, Modals } from 'types';
 
+import { Events, Modals } from 'types';
 import * as S from './styles';
 
 const PlayerControls = () => {
@@ -32,7 +33,7 @@ const PlayerControls = () => {
 
   return (
     <S.Container>
-      <div />
+      <VolumeRange />
 
       <S.Button onClick={handlePlayPause}>
         {playing ? <PauseIcon size={32} /> : <PlayIcon size={32} />}

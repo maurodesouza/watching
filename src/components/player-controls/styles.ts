@@ -2,14 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 export const Button = styled.button`
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+
+  & + & {
+    justify-content: end;
+  }
 
   * {
     cursor: pointer;
