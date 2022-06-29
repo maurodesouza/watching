@@ -7,6 +7,8 @@ import {
 } from '@styled-icons/feather';
 
 import { RangeInput } from 'components';
+import { events } from 'app';
+
 import * as S from './styles';
 
 const levels = {
@@ -21,6 +23,8 @@ const VolumeRange = () => {
 
   const handleChangeVolume = (event: FormEvent<HTMLInputElement>) => {
     const value = +(event.target as HTMLInputElement).value;
+
+    events.player.volume(value / 100);
 
     if (!value) return setVolumeLevel('muted');
     if (value < 20) return setVolumeLevel(1);

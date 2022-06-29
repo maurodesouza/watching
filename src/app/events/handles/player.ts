@@ -13,6 +13,10 @@ class PlayerHandleEvents extends BaseEventHandle {
     this.emit(Events.PLAYER_VIDEO_PLAYING, value);
   };
 
+  volume = (value: number) => {
+    this.emit(Events.PLAYER_VIDEO_VOLUME, value);
+  };
+
   video(url: string) {
     this.generateInteraction({
       event: Events.PLAYER_VIDEO_CHANGED,
