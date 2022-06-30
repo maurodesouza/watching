@@ -12,7 +12,6 @@ export const Container = styled.input<ContainerProps>`
       border-radius: 1rem;
       width: 100%;
       height: 1rem;
-      max-width: 12rem;
       background-size: ${percentage}% 100%;
       background-repeat: no-repeat;
       background-image: linear-gradient(
