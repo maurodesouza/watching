@@ -53,7 +53,7 @@ const Player = () => {
               height="100%"
               playing={playing}
               volume={volume}
-              onEnded={() => setUrl('')}
+              onProgress={e => events.player.progress(e.played * 100)}
             />
           )}
         </S.VideoWrapper>

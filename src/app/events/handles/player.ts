@@ -9,6 +9,10 @@ class PlayerHandleEvents extends BaseEventHandle {
     this.play = this.play.bind(this);
   }
 
+  progress = (value: number) => {
+    this.emit(Events.PLAYER_VIDEO_PROGRESS, value);
+  };
+
   playing = (value: boolean) => {
     this.emit(Events.PLAYER_VIDEO_PLAYING, value);
   };

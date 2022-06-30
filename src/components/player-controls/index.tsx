@@ -6,9 +6,11 @@ import {
 } from '@styled-icons/feather';
 
 import { VolumeRange } from './volume';
-import { events } from 'app';
+import { ProgressBar } from './progress-bar';
 
+import { events } from 'app';
 import { Events, Modals } from 'types';
+
 import * as S from './styles';
 
 const PlayerControls = () => {
@@ -33,15 +35,19 @@ const PlayerControls = () => {
 
   return (
     <S.Container>
-      <VolumeRange />
+      <ProgressBar />
 
-      <S.Button onClick={handlePlayPause}>
-        {playing ? <PauseIcon size={32} /> : <PlayIcon size={32} />}
-      </S.Button>
+      <S.Wrapper>
+        <VolumeRange />
 
-      <S.Button onClick={() => events.modal.open(Modals.CHANGE_VIDEO)}>
-        <ChangeIcon size={24} />
-      </S.Button>
+        <S.Button onClick={handlePlayPause}>
+          {playing ? <PauseIcon size={32} /> : <PlayIcon size={32} />}
+        </S.Button>
+
+        <S.Button onClick={() => events.modal.open(Modals.CHANGE_VIDEO)}>
+          <ChangeIcon size={24} />
+        </S.Button>
+      </S.Wrapper>
     </S.Container>
   );
 };
