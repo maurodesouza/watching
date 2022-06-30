@@ -9,6 +9,13 @@ class PlayerHandleEvents extends BaseEventHandle {
     this.play = this.play.bind(this);
   }
 
+  seek = (value: number) => {
+    this.generateInteraction({
+      event: Events.PLAYER_VIDEO_SEEKED,
+      payload: { value },
+    });
+  };
+
   progress = (value: number) => {
     this.emit(Events.PLAYER_VIDEO_PROGRESS, value);
   };

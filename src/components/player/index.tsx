@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
-import VideoPlayer from 'react-player';
+import { useEffect, useRef, useState } from 'react';
+import BaseReactPlayer from 'react-player/base';
 
+import VideoPlayer, { ReactPlayerProps } from 'react-player';
 import { PlayerControls } from 'components';
-import { events } from 'app';
 
+import { events } from 'app';
 import { Events } from 'types';
+
 import * as S from './styles';
 
 const Player = () => {
+  const playerRef = useRef<BaseReactPlayer<ReactPlayerProps>>(null);
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=u6tZhZvaP3M');
 
   const [playing, setPlaying] = useState(false);
@@ -19,6 +22,9 @@ const Player = () => {
     events.player.playing(value);
   };
 
+  const handleSeek = (event: CustomEvent) =>
+    playerRef.current.seekTo(event.detail.data.value, 'fraction');
+
   const handleChangeVideo = (event: CustomEvent) =>
     setUrl(event.detail.data.url);
 
@@ -29,12 +35,14 @@ const Player = () => {
   const handlePlay = () => handleChangePlayingState(true);
 
   useEffect(() => {
+    events.on(Events.PLAYER_VIDEO_SEEKED, handleSeek);
     events.on(Events.PLAYER_VIDEO_PAUSED, handlePause);
     events.on(Events.PLAYER_VIDEO_PLAYED, handlePlay);
     events.on(Events.PLAYER_VIDEO_VOLUME, handleChangeVolume);
     events.on(Events.PLAYER_VIDEO_CHANGED, handleChangeVideo);
 
     return () => {
+      events.off(Events.PLAYER_VIDEO_SEEKED, handleSeek);
       events.off(Events.PLAYER_VIDEO_PAUSED, handlePause);
       events.off(Events.PLAYER_VIDEO_PLAYED, handlePlay);
       events.off(Events.PLAYER_VIDEO_VOLUME, handleChangeVolume);
@@ -48,6 +56,7 @@ const Player = () => {
         <S.VideoWrapper>
           {url && (
             <VideoPlayer
+              ref={playerRef}
               url={url}
               width="100%"
               height="100%"
