@@ -5,5 +5,9 @@ export const Container = styled.div`
     display: flex;
     gap: ${theme.spacings.small};
     align-items: center;
+
+    input {
+      max-width: 12rem;
+    }
   `}
 `;
