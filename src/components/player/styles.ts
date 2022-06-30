@@ -28,19 +28,3 @@ export const VideoWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
-
-export const Controls = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Button = styled.button`
-  display: grid;
-  place-items: center;
-
-  * {
-    cursor: pointer;
-  }
-`;
