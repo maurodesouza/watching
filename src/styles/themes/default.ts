@@ -1,8 +1,4 @@
 const defaultTheme = {
-  grid: {
-    container: '104rem',
-  },
-
   border: {
     width: '1px',
     radius: '6px',
