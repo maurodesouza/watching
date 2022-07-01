@@ -4,7 +4,7 @@ export const Container = styled.button`
   ${({ theme }) => css`
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xsmall} ${theme.spacings.xlarge};
-    background: ${theme.colors.tertiary};
+    background: ${theme.colors.primary};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.weights.bold};
     transition: 0.3s;

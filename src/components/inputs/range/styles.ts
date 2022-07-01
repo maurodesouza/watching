@@ -15,8 +15,8 @@ export const Container = styled.input<ContainerProps>`
       background-size: ${percentage}% 100%;
       background-repeat: no-repeat;
       background-image: linear-gradient(
-        ${theme.colors.tertiary},
-        ${theme.colors.tertiary}
+        ${theme.colors.primary},
+        ${theme.colors.primary}
       );
 
       &:active {
@@ -28,7 +28,7 @@ export const Container = styled.input<ContainerProps>`
         height: 2.4rem;
         width: 2.4rem;
         border-radius: 50%;
-        background: ${theme.colors.tertiary};
+        background: ${theme.colors.primary};
       }
     `;
   }}

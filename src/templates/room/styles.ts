@@ -19,7 +19,7 @@ export const Title = styled.h1`
     font-size: ${theme.font.sizes.xlarge};
 
     span {
-      color: ${theme.colors.tertiary};
+      color: ${theme.colors.primary};
     }
   `}
 `;
