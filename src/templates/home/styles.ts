@@ -26,7 +26,7 @@ export const Title = styled.h1`
 
 export const Text = styled.p`
   ${({ theme }) => css`
-    margin-top: ${theme.spacings.xlarge};
-    margin-bottom: calc(${theme.spacings.xlarge} * 2);
+    margin-top: ${theme.spacings.medium};
+    margin-bottom: calc(${theme.spacings.medium} * 2);
   `}
 `;
